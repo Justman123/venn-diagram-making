@@ -110,8 +110,8 @@ function drawPolygon(points) {
 function add_set(screen_width, screen_height, shape) {
     var side1_x_pos = parseFloat(circle3.style.left) - 3
     var side2_x_pos = parseFloat(circle2.style.left) + circle_radius*2 - 20
-    var side1_y_pos = screen_height / 2
-    var side2_y_pos = screen_height / 2
+    var side1_y_pos = parseFloat(screen_height) / 2
+    var side2_y_pos = parseFloat(screen_height) / 2
     if (shape == '') {
         alert("Set Shape 버튼을 클릭하여 추가할 집합의 꼭짓점 개수를 선택해주세요!")
     }
@@ -130,10 +130,10 @@ function add_set(screen_width, screen_height, shape) {
         // 마지막 2점 빼고 그리기
         while (shape - count_to_draw  != 2)
         {
-            var next_pos_x1 = start_pos_x1 - 3
-            var next_pos_x2 = start_pos_x2 + 3
-            var next_pos_y1 = start_pos_y1 + 3
-            var next_pos_y2 = start_pos_y2 + 3
+            var next_pos_x1 = start_pos_x1 - 5
+            var next_pos_x2 = start_pos_x2 + 5
+            var next_pos_y1 = start_pos_y1 + 5
+            var next_pos_y2 = start_pos_y2 + 5
 
             points1_to_draw.push([next_pos_x1, next_pos_y1])
             points2_to_draw.push([next_pos_x2, next_pos_y2 ])
@@ -143,16 +143,17 @@ function add_set(screen_width, screen_height, shape) {
             console.log(next_pos_x2, next_pos_y2)
             console.log(start_pos_x2, start_pos_y2)
 
-            start_pos_x1 = start_pos_x1 - 3
-            start_pos_x2 = start_pos_x2 + 3
-            start_pos_y1 = start_pos_y1 - 3
-            start_pos_y2 = start_pos_y2 - 3
+            start_pos_x1 = start_pos_x1 - 5
+            start_pos_x2 = start_pos_x2 + 5
+            start_pos_y1 = start_pos_y1 + 5
+            start_pos_y2 = start_pos_y2 + 5
             
             count_to_draw = count_to_draw + 2
         }
         points1_to_draw.push([side1_x_pos, side1_y_pos])
         points1_to_draw.push([side2_x_pos, side2_y_pos])
         points2_to_draw.reverse()
+        points2_to_draw.push([saved_st2_x2, saved_st2_y2])
         
         ctx.beginPath();
         ctx.moveTo(points1_to_draw[0][0], points1_to_draw[0][1]);
@@ -172,8 +173,6 @@ function add_set(screen_width, screen_height, shape) {
         // 꼭짓점 개수가 홀수개 -> 초기 시작점은 1개 , 밑 점 두개
         var start_pos_x = parseFloat(canvas.width) / 2 - 15
         var start_pos_y = parseFloat(canvas.height) / 2 - circle_radius * 3
-        const triangleHeight = 150;
-        const triangleWidth = 100;
         points_to_draw = [];
         points_to_draw.push([start_pos_x, start_pos_y])
         points_to_draw.push([side1_x_pos, side1_y_pos])

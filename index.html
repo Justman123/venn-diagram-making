@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendiagram</title>
+    <link rel="stylesheet" href="style.css" (type="text/css")>
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="venn-diagram">
+        <div class="circle circle1" id="circle1">
+        </div>
+        <div class="circle circle2" id="circle2">
+        </div>
+        <div class="circle circle3" id="circle3">
+        </div>
+    </div>
+    <div class="setting_container" id="setting_container">
+        <button class="custom-btn btn-16" id="button1" type="button">Reset</button>
+        <button class="custom-btn btn-16" id="button2" type="button">Add Set</button>
+        <form id="form">
+            <input type="text" id="vertex">
+            <button class="custom-btn btn-16" id="button3" type="button">Set Shape</button>
+        </form>        
+    </div>
+    <canvas id="canvas"></canvas>
+</body>
+</html>
+
